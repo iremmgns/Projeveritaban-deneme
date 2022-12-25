@@ -1,0 +1,21 @@
+﻿@model Projeveritabanıdeneme.Models.EntityFramework.Danışman
+
+@{
+    ViewBag.Title = "danismanListele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a class="btn btn-success " href="/Admin/danismanListele">Yeni Departman</a>
+<div class="container mt-3">
+    <div class="form-group">
+        <h2>Öğretim Üyeleri</h2>
+        <div>
+            <label>İsim</label>
+            @Html.DropDownListFor(m=>m.Danışman_Ad, (List<SelectListItem>)ViewBag.isim, "Bir isim seçiniz", new { @class = "form-control" })
+        </div>
+        <div>
+            <label>Soy isim</label>
+            @Html.DropDownListFor(m => m.Danışman_Soyad, (List<SelectListItem>)ViewBag.soyisim, "Bir soy isim seçiniz", new { @class = "form-control" })
+        </div>
+    </div>
+
+</div>

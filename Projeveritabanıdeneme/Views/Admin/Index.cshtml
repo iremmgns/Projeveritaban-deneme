@@ -1,0 +1,56 @@
+﻿@model List<Projeveritabanıdeneme.Models.EntityFramework.Danışman>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <div class="container mt-3">
+        @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+        {
+            @Html.TextBox("searching")
+            <input type="submit" value="submit" />
+
+        }
+
+        <h2>Danışman Listesi</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>TC_No</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    @*<th>Uzmanlık Alanı</th>*@
+                    <th>Uzmanlık Başlama Tarihi</th>
+                    <th>Unvan</th>
+                    <th>Yaş</th>
+                    <th>Doğum Tarihi</th>
+                    <th>Doğum Yeri</th>
+                    <th>Uyruk</th>
+                    <th>Guncelle</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var danışman in Model)
+                {
+
+                    <tr>
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Kullanıcı.TC_No)</td>
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Danışman_Ad)</td>
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Danışman_Soyad)</td>
+                        @*<td>@Html.DisplayFor(modeldanışman=> danışman)</td>*@
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Uzmanlık_Başlama_Tarihi)</td>
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Unvan)</td>
+                        <td>@(DateTime.Now.Year- danışman.Danışman_Doğum_Tarihi.Value.Year)</td>
+                        <td>@danışman.Danışman_Doğum_Tarihi.Value.ToString("dd-MM-yyyy")</td>
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Danışman_Doğum_Yeri)</td>
+                        <td>@Html.DisplayFor(modeldanışman => danışman.Danışman_Uyruğu)</td>
+                        <td><a class="btn btn-primary" href="/Departman/Guncelle/@danışman.Danışman_Id">Guncelle</a></td>
+                        <td><a class="btn btn-warning" href="/Departman/Sil/@danışman.Danışman_Ad">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+

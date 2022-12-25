@@ -1,0 +1,27 @@
+﻿@model Projeveritabanıdeneme.Models.EntityFramework.Danışman
+@{
+    ViewBag.Title = "Kaydet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kaydet</h2>
+
+@*<h2>Yeni</h2>*@
+@*<form method="post">
+        <div class="form-group">
+            <label>Departman Adı</label>
+            <input type="text" name="Ad" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Ekle</button>
+    </form>*@
+
+@using (Html.BeginForm("Kaydet", "Admin", FormMethod.Post))//HELPER METOT Hem ekleme hem güncelleme işlemi buradan oluyor.
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Danışman_Id)
+        @Html.TextBoxFor(m => m.Danışman_Ad, new { @class = "form-control" })
+
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-success">Kaydet</button>
+}

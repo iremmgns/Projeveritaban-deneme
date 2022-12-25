@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Projeveritabanıdeneme.Models.EntityFramework.Öğrenci>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Html.ActionLink("Yeni Öğrenci", "Yeni", null, new { @class = "btn btn-success" })*@
+<div class="container mt-3">
+    @using (Html.BeginForm("Index2", "Admin", FormMethod.Get))
+    {
+        @Html.TextBox("searching")
+        <input type="submit" value="submit" />
+
+    }
+
+    <h2>Danışman Listesi</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>TC_No</th>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Uzmanlık Alanı</th>
+                <th>Uzmanlık Eğitimi Başlama Tarihi</th>
+                <th>Uzmanlık Eğitimi Tamamlama Tarihi</th>
+                <th>Yaş</th>
+                <th>Doğum Tarihi</th>
+                <th>Doğum Yeri</th>
+                <th>DUS Puanı</th>
+                <th>Uyruk</th>
+                <th>Guncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var öğrenci in Model)
+            {
+
+                <tr>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Kullanıcı.TC_No)</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Öğrenci_Ad)</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Öğrenci_Soyad)</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Uzmanlık_Alanı.Uzmanlık_Ad)</td>
+                    <td>@öğrenci.Uzmanlık_Eğitimi_Başlama_Tarihi.Value.ToString("dd-MM-yyyy")</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Uzmanlık_Eğitimi_Tamamlama_Tarihi)</td>
+                    <td>@(DateTime.Now.Year- öğrenci.Öğrenci_Doğum_Tarihi.Value.Year)</td>
+                    <td>@öğrenci.Öğrenci_Doğum_Tarihi.Value.ToString("dd-MM-yyyy")</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Öğrenci_Doğum_Yeri)</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Öğrenci_DUS_Puanı)</td>
+                    <td>@Html.DisplayFor(modelöğrenci => öğrenci.Öğrenci_Uyruğu)</td>
+                    <td><a class="btn btn-primary" href="/Departman/Guncelle/@öğrenci.Öğrenci_Id">Guncelle</a></td>
+                    <td><a class="btn btn-warning" href="/Departman/Sil/@öğrenci.Öğrenci_Ad">Sil</a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,1350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="deneme3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Akademik_Ders">
+          <Key>
+            <PropertyRef Name="Akademik_Ders_Id" />
+          </Key>
+          <Property Name="Akademik_Ders_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Danışman_Id" Type="int" />
+          <Property Name="Uzmanlık_Id" Type="int" />
+          <Property Name="Ders_Tanımı" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ders_Kod" Type="nvarchar" MaxLength="255" />
+          <Property Name="AKTS" Type="int" />
+          <Property Name="KREDI" Type="int" />
+          <Property Name="DIL_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TUR_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Psf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Akademik_Ders_Öğrenci">
+          <Key>
+            <PropertyRef Name="Akademik_Ders_Öğrenci_Id" />
+          </Key>
+          <Property Name="Akademik_Ders_Öğrenci_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Öğrenci_Id" Type="int" />
+          <Property Name="Akademik_Ders_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Akademik_Dönem">
+          <Key>
+            <PropertyRef Name="Akademik_Dönem_Id" />
+          </Key>
+          <Property Name="Akademik_Dönem_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Akademik_Dönem" Type="nvarchar" MaxLength="255" />
+          <Property Name="Yarıyıl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Toplam_Hafta" Type="int" />
+        </EntityType>
+        <EntityType Name="Araştırma_Yeteneği">
+          <Key>
+            <PropertyRef Name="Araştırma_Yeteneği_Id" />
+          </Key>
+          <Property Name="Araştırma_Yeteneği_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Araştırma_İsteği" Type="int" />
+          <Property Name="Yürütme_Sonuç" Type="int" />
+          <Property Name="Kaynak_Verimli_Kullanma" Type="int" />
+          <Property Name="Yayın_Yapma_Becerisi" Type="int" />
+          <Property Name="Araştırma_Yetenek_Ort" Type="float" />
+        </EntityType>
+        <EntityType Name="Çalışma_Yeteneği">
+          <Key>
+            <PropertyRef Name="Çalişma_Yeteneği_Id" />
+          </Key>
+          <Property Name="Çalişma_Yeteneği_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mesleki_Uygulama_Yeteneği" Type="int" />
+          <Property Name="Bilimsellik" Type="int" />
+          <Property Name="Ekip_Çalışması_Uyum" Type="int" />
+          <Property Name="Çalışma_Yeteneği_Ort" Type="float" />
+        </EntityType>
+        <EntityType Name="Danışman">
+          <Key>
+            <PropertyRef Name="Danışman_Id" />
+          </Key>
+          <Property Name="Danışman_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanıcı_Id" Type="int" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Danışman_Ad" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Danışman_Soyad" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Danışman_Doğum_Tarihi" Type="date" />
+          <Property Name="Danışman_Doğum_Yeri" Type="nvarchar" MaxLength="255" />
+          <Property Name="Danışman_Uyruğu" Type="nvarchar" MaxLength="255" />
+          <Property Name="Uzmanlık_Başlama_Tarihi" Type="date" />
+          <Property Name="Psf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Ders_Ekleme_Çıkarma">
+          <Key>
+            <PropertyRef Name="Ders_Ekleme_Cikarma_Id" />
+          </Key>
+          <Property Name="Ders_Ekleme_Cikarma_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Akademik_Dönem_Id" Type="int" />
+          <Property Name="Akademik_Ders_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Göreve_Bağlılık">
+          <Key>
+            <PropertyRef Name="Göreve_Bağlılık_Id" />
+          </Key>
+          <Property Name="Göreve_Bağlılık_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mesai_Saat_Uyum" Type="int" />
+          <Property Name="Görev_Sorumluluğu" Type="int" />
+          <Property Name="Görev_Yürütme" Type="int" />
+          <Property Name="Görev_Sonuç" Type="int" />
+          <Property Name="Görev_Bağlılık_Ort" Type="float" />
+        </EntityType>
+        <EntityType Name="Kanaat_Formu">
+          <Key>
+            <PropertyRef Name="Kanaat_Form_Id" />
+          </Key>
+          <Property Name="Kanaat_Form_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mesleki_Ahlak_Id" Type="int" />
+          <Property Name="Yönetme_Yeteneği_Id" Type="int" />
+          <Property Name="Araştırma_Yeteneği_Id" Type="int" />
+          <Property Name="Çalişma_Yeteneği_Id" Type="int" />
+          <Property Name="Göreve_Bağlılık_Id" Type="int" />
+          <Property Name="Öğrenci_Id" Type="int" />
+          <Property Name="Deg_Not" Type="float" />
+          <Property Name="Açıklama" Type="nvarchar" MaxLength="255" />
+          <Property Name="Formu_Dolduran" Type="nvarchar" MaxLength="50" />
+          <Property Name="Düşük_Tekrar" Type="int" />
+        </EntityType>
+        <EntityType Name="Kullanıcı">
+          <Key>
+            <PropertyRef Name="Kullanıcı_Id" />
+          </Key>
+          <Property Name="Kullanıcı_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanıcı_Adı" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Rol" Type="int" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="TC_No" Type="nvarchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesleki_Ahlak">
+          <Key>
+            <PropertyRef Name="Mesleki_Ahlak_Id" />
+          </Key>
+          <Property Name="Mesleki_Ahlak_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Öğrenci_İlişkiler" Type="int" />
+          <Property Name="Uzman_İlişkiler" Type="int" />
+          <Property Name="Çalışan_İlişkiler" Type="int" />
+          <Property Name="Hasta_İlişkiler" Type="int" />
+          <Property Name="Diğer_İlişkiler" Type="int" />
+          <Property Name="Mesleki_Ahlak_Ort" Type="float" />
+        </EntityType>
+        <EntityType Name="Not_Tablosu">
+          <Key>
+            <PropertyRef Name="Not_Id" />
+          </Key>
+          <Property Name="Not_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Akademik_Ders_Öğrenci_Id" Type="int" />
+          <Property Name="Sınav_Not" Type="float" />
+        </EntityType>
+        <EntityType Name="Öğrenci">
+          <Key>
+            <PropertyRef Name="Öğrenci_Id" />
+          </Key>
+          <Property Name="Öğrenci_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kullanıcı_Id" Type="int" />
+          <Property Name="Uzmanlık_Id" Type="int" />
+          <Property Name="Danışman_Id" Type="int" />
+          <Property Name="Öğrenci_Ad" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Öğrenci_Soyad" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Öğrenci_Doğum_Tarihi" Type="date" />
+          <Property Name="Öğrenci_Doğum_Yeri" Type="nvarchar" MaxLength="255" />
+          <Property Name="Öğrenci_Uyruğu" Type="nvarchar" MaxLength="255" />
+          <Property Name="Öğrenci_DUS_Puanı" Type="real" />
+          <Property Name="Uzmanlık_Eğitimi_Başlama_Tarihi" Type="date" />
+          <Property Name="Uzmanlık_Eğitimi_Tamamlama_Tarihi" Type="date" />
+          <Property Name="Psf_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Uzmanlık_Alanı">
+          <Key>
+            <PropertyRef Name="Uzmanlık_Id" />
+          </Key>
+          <Property Name="Uzmanlık_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uzmanlık_Ad" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yorum">
+          <Key>
+            <PropertyRef Name="Yorum_Id" />
+          </Key>
+          <Property Name="Yorum_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Öğrenci_Id" Type="int" />
+          <Property Name="Danışman_Id" Type="int" />
+          <Property Name="Yorum" Type="text" />
+          <Property Name="Yorum_Tarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="Yönetme_Yeteneği">
+          <Key>
+            <PropertyRef Name="Yönetme_Yeteneği_Id" />
+          </Key>
+          <Property Name="Yönetme_Yeteneği_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Problem_Çözüm" Type="int" />
+          <Property Name="Org_Koord_Yetenek" Type="int" />
+          <Property Name="İletişim_Yetenek" Type="int" />
+          <Property Name="Yönetme_Yet_Ort" Type="float" />
+        </EntityType>
+        <Association Name="FK__Akademik___Akade__403A8C7D">
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="0..1" />
+          <End Role="Akademik_Ders_Öğrenci" Type="Self.Akademik_Ders_Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Ders">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders_Öğrenci">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Akademik___Danış__35BCFE0A">
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danışman">
+              <PropertyRef Name="Danışman_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders">
+              <PropertyRef Name="Danışman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Akademik___Öğren__3F466844">
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Akademik_Ders_Öğrenci" Type="Self.Akademik_Ders_Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders_Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Akademik___Uzman__36B12243">
+          <End Role="Uzmanlık_Alanı" Type="Self.Uzmanlık_Alanı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzmanlık_Alanı">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Danışman__Kullan__2A4B4B5E">
+          <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanıcı">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Principal>
+            <Dependent Role="Danışman">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ders_Ekle__Akade__3B75D760">
+          <End Role="Akademik_Dönem" Type="Self.Akademik_Dönem" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ders_Ekleme_Çıkarma" Type="Self.Ders_Ekleme_Çıkarma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Dönem">
+              <PropertyRef Name="Akademik_Dönem_Id" />
+            </Principal>
+            <Dependent Role="Ders_Ekleme_Çıkarma">
+              <PropertyRef Name="Akademik_Dönem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ders_Ekle__Akade__3C69FB99">
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ders_Ekleme_Çıkarma" Type="Self.Ders_Ekleme_Çıkarma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Ders">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Principal>
+            <Dependent Role="Ders_Ekleme_Çıkarma">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Araşt__5165187F">
+          <End Role="Araştırma_Yeteneği" Type="Self.Araştırma_Yeteneği" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Araştırma_Yeteneği">
+              <PropertyRef Name="Araştırma_Yeteneği_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Araştırma_Yeteneği_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Çaliş__52593CB8">
+          <End Role="Çalışma_Yeteneği" Type="Self.Çalışma_Yeteneği" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Çalışma_Yeteneği">
+              <PropertyRef Name="Çalişma_Yeteneği_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Çalişma_Yeteneği_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Görev__534D60F1">
+          <End Role="Göreve_Bağlılık" Type="Self.Göreve_Bağlılık" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Göreve_Bağlılık">
+              <PropertyRef Name="Göreve_Bağlılık_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Göreve_Bağlılık_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Mesle__4F7CD00D">
+          <End Role="Mesleki_Ahlak" Type="Self.Mesleki_Ahlak" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesleki_Ahlak">
+              <PropertyRef Name="Mesleki_Ahlak_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Mesleki_Ahlak_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Öğren__5441852A">
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Yönet__5070F446">
+          <End Role="Yönetme_Yeteneği" Type="Self.Yönetme_Yeteneği" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yönetme_Yeteneği">
+              <PropertyRef Name="Yönetme_Yeteneği_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Yönetme_Yeteneği_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Not_Tablo__Akade__4316F928">
+          <End Role="Akademik_Ders_Öğrenci" Type="Self.Akademik_Ders_Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Not_Tablosu" Type="Self.Not_Tablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Ders_Öğrenci">
+              <PropertyRef Name="Akademik_Ders_Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Not_Tablosu">
+              <PropertyRef Name="Akademik_Ders_Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Öğrenci__Danışma__2F10007B">
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="0..1" />
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danışman">
+              <PropertyRef Name="Danışman_Id" />
+            </Principal>
+            <Dependent Role="Öğrenci">
+              <PropertyRef Name="Danışman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Öğrenci__Kullanı__2D27B809">
+          <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanıcı">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Principal>
+            <Dependent Role="Öğrenci">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Öğrenci__Uzmanlı__2E1BDC42">
+          <End Role="Uzmanlık_Alanı" Type="Self.Uzmanlık_Alanı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzmanlık_Alanı">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Principal>
+            <Dependent Role="Öğrenci">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorum__Danışman___32E0915F">
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="0..1" />
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danışman">
+              <PropertyRef Name="Danışman_Id" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="Danışman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorum__Öğrenci_I__31EC6D26">
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="danismannameeee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Danışman_Id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="deneme3ModelStoreContainer">
+          <EntitySet Name="Akademik_Ders" EntityType="Self.Akademik_Ders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Akademik_Ders_Öğrenci" EntityType="Self.Akademik_Ders_Öğrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Akademik_Dönem" EntityType="Self.Akademik_Dönem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Araştırma_Yeteneği" EntityType="Self.Araştırma_Yeteneği" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Çalışma_Yeteneği" EntityType="Self.Çalışma_Yeteneği" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Danışman" EntityType="Self.Danışman" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ders_Ekleme_Çıkarma" EntityType="Self.Ders_Ekleme_Çıkarma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Göreve_Bağlılık" EntityType="Self.Göreve_Bağlılık" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kanaat_Formu" EntityType="Self.Kanaat_Formu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanıcı" EntityType="Self.Kullanıcı" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesleki_Ahlak" EntityType="Self.Mesleki_Ahlak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Not_Tablosu" EntityType="Self.Not_Tablosu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Öğrenci" EntityType="Self.Öğrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzmanlık_Alanı" EntityType="Self.Uzmanlık_Alanı" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorum" EntityType="Self.Yorum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yönetme_Yeteneği" EntityType="Self.Yönetme_Yeteneği" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Akademik___Akade__403A8C7D" Association="Self.FK__Akademik___Akade__403A8C7D">
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+            <End Role="Akademik_Ders_Öğrenci" EntitySet="Akademik_Ders_Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Akademik___Danış__35BCFE0A" Association="Self.FK__Akademik___Danış__35BCFE0A">
+            <End Role="Danışman" EntitySet="Danışman" />
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Akademik___Öğren__3F466844" Association="Self.FK__Akademik___Öğren__3F466844">
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+            <End Role="Akademik_Ders_Öğrenci" EntitySet="Akademik_Ders_Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Akademik___Uzman__36B12243" Association="Self.FK__Akademik___Uzman__36B12243">
+            <End Role="Uzmanlık_Alanı" EntitySet="Uzmanlık_Alanı" />
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Danışman__Kullan__2A4B4B5E" Association="Self.FK__Danışman__Kullan__2A4B4B5E">
+            <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+            <End Role="Danışman" EntitySet="Danışman" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ders_Ekle__Akade__3B75D760" Association="Self.FK__Ders_Ekle__Akade__3B75D760">
+            <End Role="Akademik_Dönem" EntitySet="Akademik_Dönem" />
+            <End Role="Ders_Ekleme_Çıkarma" EntitySet="Ders_Ekleme_Çıkarma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ders_Ekle__Akade__3C69FB99" Association="Self.FK__Ders_Ekle__Akade__3C69FB99">
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+            <End Role="Ders_Ekleme_Çıkarma" EntitySet="Ders_Ekleme_Çıkarma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Araşt__5165187F" Association="Self.FK__Kanaat_Fo__Araşt__5165187F">
+            <End Role="Araştırma_Yeteneği" EntitySet="Araştırma_Yeteneği" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Çaliş__52593CB8" Association="Self.FK__Kanaat_Fo__Çaliş__52593CB8">
+            <End Role="Çalışma_Yeteneği" EntitySet="Çalışma_Yeteneği" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Görev__534D60F1" Association="Self.FK__Kanaat_Fo__Görev__534D60F1">
+            <End Role="Göreve_Bağlılık" EntitySet="Göreve_Bağlılık" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Mesle__4F7CD00D" Association="Self.FK__Kanaat_Fo__Mesle__4F7CD00D">
+            <End Role="Mesleki_Ahlak" EntitySet="Mesleki_Ahlak" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Öğren__5441852A" Association="Self.FK__Kanaat_Fo__Öğren__5441852A">
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Yönet__5070F446" Association="Self.FK__Kanaat_Fo__Yönet__5070F446">
+            <End Role="Yönetme_Yeteneği" EntitySet="Yönetme_Yeteneği" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Not_Tablo__Akade__4316F928" Association="Self.FK__Not_Tablo__Akade__4316F928">
+            <End Role="Akademik_Ders_Öğrenci" EntitySet="Akademik_Ders_Öğrenci" />
+            <End Role="Not_Tablosu" EntitySet="Not_Tablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Öğrenci__Danışma__2F10007B" Association="Self.FK__Öğrenci__Danışma__2F10007B">
+            <End Role="Danışman" EntitySet="Danışman" />
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Öğrenci__Kullanı__2D27B809" Association="Self.FK__Öğrenci__Kullanı__2D27B809">
+            <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Öğrenci__Uzmanlı__2E1BDC42" Association="Self.FK__Öğrenci__Uzmanlı__2E1BDC42">
+            <End Role="Uzmanlık_Alanı" EntitySet="Uzmanlık_Alanı" />
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorum__Danışman___32E0915F" Association="Self.FK__Yorum__Danışman___32E0915F">
+            <End Role="Danışman" EntitySet="Danışman" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorum__Öğrenci_I__31EC6D26" Association="Self.FK__Yorum__Öğrenci_I__31EC6D26">
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="deneme3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Akademik_Ders">
+          <Key>
+            <PropertyRef Name="Akademik_Ders_Id" />
+          </Key>
+          <Property Name="Akademik_Ders_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Danışman_Id" Type="Int32" />
+          <Property Name="Uzmanlık_Id" Type="Int32" />
+          <Property Name="Ders_Tanımı" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Ders_Kod" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AKTS" Type="Int32" />
+          <Property Name="KREDI" Type="Int32" />
+          <Property Name="DIL_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TUR_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Psf_Id" Type="Int32" />
+          <NavigationProperty Name="Akademik_Ders_Öğrenci" Relationship="Self.FK__Akademik___Akade__403A8C7D" FromRole="Akademik_Ders" ToRole="Akademik_Ders_Öğrenci" />
+          <NavigationProperty Name="Danışman" Relationship="Self.FK__Akademik___Danış__35BCFE0A" FromRole="Akademik_Ders" ToRole="Danışman" />
+          <NavigationProperty Name="Uzmanlık_Alanı" Relationship="Self.FK__Akademik___Uzman__36B12243" FromRole="Akademik_Ders" ToRole="Uzmanlık_Alanı" />
+          <NavigationProperty Name="Ders_Ekleme_Çıkarma" Relationship="Self.FK__Ders_Ekle__Akade__3C69FB99" FromRole="Akademik_Ders" ToRole="Ders_Ekleme_Çıkarma" />
+        </EntityType>
+        <EntityType Name="Akademik_Ders_Öğrenci">
+          <Key>
+            <PropertyRef Name="Akademik_Ders_Öğrenci_Id" />
+          </Key>
+          <Property Name="Akademik_Ders_Öğrenci_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Öğrenci_Id" Type="Int32" />
+          <Property Name="Akademik_Ders_Id" Type="Int32" />
+          <NavigationProperty Name="Akademik_Ders" Relationship="Self.FK__Akademik___Akade__403A8C7D" FromRole="Akademik_Ders_Öğrenci" ToRole="Akademik_Ders" />
+          <NavigationProperty Name="Öğrenci" Relationship="Self.FK__Akademik___Öğren__3F466844" FromRole="Akademik_Ders_Öğrenci" ToRole="Öğrenci" />
+          <NavigationProperty Name="Not_Tablosu" Relationship="Self.FK__Not_Tablo__Akade__4316F928" FromRole="Akademik_Ders_Öğrenci" ToRole="Not_Tablosu" />
+        </EntityType>
+        <EntityType Name="Akademik_Dönem">
+          <Key>
+            <PropertyRef Name="Akademik_Dönem_Id" />
+          </Key>
+          <Property Name="Akademik_Dönem_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Akademik_Dönem1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Yarıyıl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Toplam_Hafta" Type="Int32" />
+          <NavigationProperty Name="Ders_Ekleme_Çıkarma" Relationship="Self.FK__Ders_Ekle__Akade__3B75D760" FromRole="Akademik_Dönem" ToRole="Ders_Ekleme_Çıkarma" />
+        </EntityType>
+        <EntityType Name="Araştırma_Yeteneği">
+          <Key>
+            <PropertyRef Name="Araştırma_Yeteneği_Id" />
+          </Key>
+          <Property Name="Araştırma_Yeteneği_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Araştırma_İsteği" Type="Int32" />
+          <Property Name="Yürütme_Sonuç" Type="Int32" />
+          <Property Name="Kaynak_Verimli_Kullanma" Type="Int32" />
+          <Property Name="Yayın_Yapma_Becerisi" Type="Int32" />
+          <Property Name="Araştırma_Yetenek_Ort" Type="Double" />
+          <NavigationProperty Name="Kanaat_Formu" Relationship="Self.FK__Kanaat_Fo__Araşt__5165187F" FromRole="Araştırma_Yeteneği" ToRole="Kanaat_Formu" />
+        </EntityType>
+        <EntityType Name="Çalışma_Yeteneği">
+          <Key>
+            <PropertyRef Name="Çalişma_Yeteneği_Id" />
+          </Key>
+          <Property Name="Çalişma_Yeteneği_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mesleki_Uygulama_Yeteneği" Type="Int32" />
+          <Property Name="Bilimsellik" Type="Int32" />
+          <Property Name="Ekip_Çalışması_Uyum" Type="Int32" />
+          <Property Name="Çalışma_Yeteneği_Ort" Type="Double" />
+          <NavigationProperty Name="Kanaat_Formu" Relationship="Self.FK__Kanaat_Fo__Çaliş__52593CB8" FromRole="Çalışma_Yeteneği" ToRole="Kanaat_Formu" />
+        </EntityType>
+        <EntityType Name="Danışman">
+          <Key>
+            <PropertyRef Name="Danışman_Id" />
+          </Key>
+          <Property Name="Danışman_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanıcı_Id" Type="Int32" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Danışman_Ad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Danışman_Soyad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Danışman_Doğum_Tarihi" Type="DateTime" Precision="0" />
+          <Property Name="Danışman_Doğum_Yeri" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Danışman_Uyruğu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Uzmanlık_Başlama_Tarihi" Type="DateTime" Precision="0" />
+          <Property Name="Psf_Id" Type="Int32" />
+          <NavigationProperty Name="Akademik_Ders" Relationship="Self.FK__Akademik___Danış__35BCFE0A" FromRole="Danışman" ToRole="Akademik_Ders" />
+          <NavigationProperty Name="Kullanıcı" Relationship="Self.FK__Danışman__Kullan__2A4B4B5E" FromRole="Danışman" ToRole="Kullanıcı" />
+          <NavigationProperty Name="Öğrenci" Relationship="Self.FK__Öğrenci__Danışma__2F10007B" FromRole="Danışman" ToRole="Öğrenci" />
+          <NavigationProperty Name="Yorum" Relationship="Self.FK__Yorum__Danışman___32E0915F" FromRole="Danışman" ToRole="Yorum" />
+        </EntityType>
+        <EntityType Name="Ders_Ekleme_Çıkarma">
+          <Key>
+            <PropertyRef Name="Ders_Ekleme_Cikarma_Id" />
+          </Key>
+          <Property Name="Ders_Ekleme_Cikarma_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Akademik_Dönem_Id" Type="Int32" />
+          <Property Name="Akademik_Ders_Id" Type="Int32" />
+          <NavigationProperty Name="Akademik_Ders" Relationship="Self.FK__Ders_Ekle__Akade__3C69FB99" FromRole="Ders_Ekleme_Çıkarma" ToRole="Akademik_Ders" />
+          <NavigationProperty Name="Akademik_Dönem" Relationship="Self.FK__Ders_Ekle__Akade__3B75D760" FromRole="Ders_Ekleme_Çıkarma" ToRole="Akademik_Dönem" />
+        </EntityType>
+        <EntityType Name="Göreve_Bağlılık">
+          <Key>
+            <PropertyRef Name="Göreve_Bağlılık_Id" />
+          </Key>
+          <Property Name="Göreve_Bağlılık_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mesai_Saat_Uyum" Type="Int32" />
+          <Property Name="Görev_Sorumluluğu" Type="Int32" />
+          <Property Name="Görev_Yürütme" Type="Int32" />
+          <Property Name="Görev_Sonuç" Type="Int32" />
+          <Property Name="Görev_Bağlılık_Ort" Type="Double" />
+          <NavigationProperty Name="Kanaat_Formu" Relationship="Self.FK__Kanaat_Fo__Görev__534D60F1" FromRole="Göreve_Bağlılık" ToRole="Kanaat_Formu" />
+        </EntityType>
+        <EntityType Name="Kanaat_Formu">
+          <Key>
+            <PropertyRef Name="Kanaat_Form_Id" />
+          </Key>
+          <Property Name="Kanaat_Form_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mesleki_Ahlak_Id" Type="Int32" />
+          <Property Name="Yönetme_Yeteneği_Id" Type="Int32" />
+          <Property Name="Araştırma_Yeteneği_Id" Type="Int32" />
+          <Property Name="Çalişma_Yeteneği_Id" Type="Int32" />
+          <Property Name="Göreve_Bağlılık_Id" Type="Int32" />
+          <Property Name="Öğrenci_Id" Type="Int32" />
+          <Property Name="Deg_Not" Type="Double" />
+          <Property Name="Açıklama" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Formu_Dolduran" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Düşük_Tekrar" Type="Int32" />
+          <NavigationProperty Name="Araştırma_Yeteneği" Relationship="Self.FK__Kanaat_Fo__Araşt__5165187F" FromRole="Kanaat_Formu" ToRole="Araştırma_Yeteneği" />
+          <NavigationProperty Name="Çalışma_Yeteneği" Relationship="Self.FK__Kanaat_Fo__Çaliş__52593CB8" FromRole="Kanaat_Formu" ToRole="Çalışma_Yeteneği" />
+          <NavigationProperty Name="Göreve_Bağlılık" Relationship="Self.FK__Kanaat_Fo__Görev__534D60F1" FromRole="Kanaat_Formu" ToRole="Göreve_Bağlılık" />
+          <NavigationProperty Name="Mesleki_Ahlak" Relationship="Self.FK__Kanaat_Fo__Mesle__4F7CD00D" FromRole="Kanaat_Formu" ToRole="Mesleki_Ahlak" />
+          <NavigationProperty Name="Öğrenci" Relationship="Self.FK__Kanaat_Fo__Öğren__5441852A" FromRole="Kanaat_Formu" ToRole="Öğrenci" />
+          <NavigationProperty Name="Yönetme_Yeteneği" Relationship="Self.FK__Kanaat_Fo__Yönet__5070F446" FromRole="Kanaat_Formu" ToRole="Yönetme_Yeteneği" />
+        </EntityType>
+        <EntityType Name="Kullanıcı">
+          <Key>
+            <PropertyRef Name="Kullanıcı_Id" />
+          </Key>
+          <Property Name="Kullanıcı_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanıcı_Adı" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parola" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rol" Type="Int32" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TC_No" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Danışman" Relationship="Self.FK__Danışman__Kullan__2A4B4B5E" FromRole="Kullanıcı" ToRole="Danışman" />
+          <NavigationProperty Name="Öğrenci" Relationship="Self.FK__Öğrenci__Kullanı__2D27B809" FromRole="Kullanıcı" ToRole="Öğrenci" />
+        </EntityType>
+        <EntityType Name="Mesleki_Ahlak">
+          <Key>
+            <PropertyRef Name="Mesleki_Ahlak_Id" />
+          </Key>
+          <Property Name="Mesleki_Ahlak_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Öğrenci_İlişkiler" Type="Int32" />
+          <Property Name="Uzman_İlişkiler" Type="Int32" />
+          <Property Name="Çalışan_İlişkiler" Type="Int32" />
+          <Property Name="Hasta_İlişkiler" Type="Int32" />
+          <Property Name="Diğer_İlişkiler" Type="Int32" />
+          <Property Name="Mesleki_Ahlak_Ort" Type="Double" />
+          <NavigationProperty Name="Kanaat_Formu" Relationship="Self.FK__Kanaat_Fo__Mesle__4F7CD00D" FromRole="Mesleki_Ahlak" ToRole="Kanaat_Formu" />
+        </EntityType>
+        <EntityType Name="Not_Tablosu">
+          <Key>
+            <PropertyRef Name="Not_Id" />
+          </Key>
+          <Property Name="Not_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Akademik_Ders_Öğrenci_Id" Type="Int32" />
+          <Property Name="Sınav_Not" Type="Double" />
+          <NavigationProperty Name="Akademik_Ders_Öğrenci" Relationship="Self.FK__Not_Tablo__Akade__4316F928" FromRole="Not_Tablosu" ToRole="Akademik_Ders_Öğrenci" />
+        </EntityType>
+        <EntityType Name="Öğrenci">
+          <Key>
+            <PropertyRef Name="Öğrenci_Id" />
+          </Key>
+          <Property Name="Öğrenci_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kullanıcı_Id" Type="Int32" />
+          <Property Name="Uzmanlık_Id" Type="Int32" />
+          <Property Name="Danışman_Id" Type="Int32" />
+          <Property Name="Öğrenci_Ad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Öğrenci_Soyad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Öğrenci_Doğum_Tarihi" Type="DateTime" Precision="0" />
+          <Property Name="Öğrenci_Doğum_Yeri" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Öğrenci_Uyruğu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Öğrenci_DUS_Puanı" Type="Single" />
+          <Property Name="Uzmanlık_Eğitimi_Başlama_Tarihi" Type="DateTime" Precision="0" />
+          <Property Name="Uzmanlık_Eğitimi_Tamamlama_Tarihi" Type="DateTime" Precision="0" />
+          <Property Name="Psf_Id" Type="Int32" />
+          <NavigationProperty Name="Akademik_Ders_Öğrenci" Relationship="Self.FK__Akademik___Öğren__3F466844" FromRole="Öğrenci" ToRole="Akademik_Ders_Öğrenci" />
+          <NavigationProperty Name="Danışman" Relationship="Self.FK__Öğrenci__Danışma__2F10007B" FromRole="Öğrenci" ToRole="Danışman" />
+          <NavigationProperty Name="Kanaat_Formu" Relationship="Self.FK__Kanaat_Fo__Öğren__5441852A" FromRole="Öğrenci" ToRole="Kanaat_Formu" />
+          <NavigationProperty Name="Kullanıcı" Relationship="Self.FK__Öğrenci__Kullanı__2D27B809" FromRole="Öğrenci" ToRole="Kullanıcı" />
+          <NavigationProperty Name="Uzmanlık_Alanı" Relationship="Self.FK__Öğrenci__Uzmanlı__2E1BDC42" FromRole="Öğrenci" ToRole="Uzmanlık_Alanı" />
+          <NavigationProperty Name="Yorum" Relationship="Self.FK__Yorum__Öğrenci_I__31EC6D26" FromRole="Öğrenci" ToRole="Yorum" />
+        </EntityType>
+        <EntityType Name="Uzmanlık_Alanı">
+          <Key>
+            <PropertyRef Name="Uzmanlık_Id" />
+          </Key>
+          <Property Name="Uzmanlık_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uzmanlık_Ad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Akademik_Ders" Relationship="Self.FK__Akademik___Uzman__36B12243" FromRole="Uzmanlık_Alanı" ToRole="Akademik_Ders" />
+          <NavigationProperty Name="Öğrenci" Relationship="Self.FK__Öğrenci__Uzmanlı__2E1BDC42" FromRole="Uzmanlık_Alanı" ToRole="Öğrenci" />
+        </EntityType>
+        <EntityType Name="Yorum">
+          <Key>
+            <PropertyRef Name="Yorum_Id" />
+          </Key>
+          <Property Name="Yorum_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Öğrenci_Id" Type="Int32" />
+          <Property Name="Danışman_Id" Type="Int32" />
+          <Property Name="Yorum1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Yorum_Tarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Danışman" Relationship="Self.FK__Yorum__Danışman___32E0915F" FromRole="Yorum" ToRole="Danışman" />
+          <NavigationProperty Name="Öğrenci" Relationship="Self.FK__Yorum__Öğrenci_I__31EC6D26" FromRole="Yorum" ToRole="Öğrenci" />
+        </EntityType>
+        <EntityType Name="Yönetme_Yeteneği">
+          <Key>
+            <PropertyRef Name="Yönetme_Yeteneği_Id" />
+          </Key>
+          <Property Name="Yönetme_Yeteneği_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Problem_Çözüm" Type="Int32" />
+          <Property Name="Org_Koord_Yetenek" Type="Int32" />
+          <Property Name="İletişim_Yetenek" Type="Int32" />
+          <Property Name="Yönetme_Yet_Ort" Type="Double" />
+          <NavigationProperty Name="Kanaat_Formu" Relationship="Self.FK__Kanaat_Fo__Yönet__5070F446" FromRole="Yönetme_Yeteneği" ToRole="Kanaat_Formu" />
+        </EntityType>
+        <Association Name="FK__Akademik___Akade__403A8C7D">
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="0..1" />
+          <End Role="Akademik_Ders_Öğrenci" Type="Self.Akademik_Ders_Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Ders">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders_Öğrenci">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Akademik___Danış__35BCFE0A">
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danışman">
+              <PropertyRef Name="Danışman_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders">
+              <PropertyRef Name="Danışman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Akademik___Uzman__36B12243">
+          <End Role="Uzmanlık_Alanı" Type="Self.Uzmanlık_Alanı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzmanlık_Alanı">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ders_Ekle__Akade__3C69FB99">
+          <End Role="Akademik_Ders" Type="Self.Akademik_Ders" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ders_Ekleme_Çıkarma" Type="Self.Ders_Ekleme_Çıkarma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Ders">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Principal>
+            <Dependent Role="Ders_Ekleme_Çıkarma">
+              <PropertyRef Name="Akademik_Ders_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Akademik___Öğren__3F466844">
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Akademik_Ders_Öğrenci" Type="Self.Akademik_Ders_Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Akademik_Ders_Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Not_Tablo__Akade__4316F928">
+          <End Role="Akademik_Ders_Öğrenci" Type="Self.Akademik_Ders_Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Not_Tablosu" Type="Self.Not_Tablosu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Ders_Öğrenci">
+              <PropertyRef Name="Akademik_Ders_Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Not_Tablosu">
+              <PropertyRef Name="Akademik_Ders_Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ders_Ekle__Akade__3B75D760">
+          <End Role="Akademik_Dönem" Type="Self.Akademik_Dönem" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ders_Ekleme_Çıkarma" Type="Self.Ders_Ekleme_Çıkarma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akademik_Dönem">
+              <PropertyRef Name="Akademik_Dönem_Id" />
+            </Principal>
+            <Dependent Role="Ders_Ekleme_Çıkarma">
+              <PropertyRef Name="Akademik_Dönem_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Araşt__5165187F">
+          <End Role="Araştırma_Yeteneği" Type="Self.Araştırma_Yeteneği" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Araştırma_Yeteneği">
+              <PropertyRef Name="Araştırma_Yeteneği_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Araştırma_Yeteneği_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Çaliş__52593CB8">
+          <End Role="Çalışma_Yeteneği" Type="Self.Çalışma_Yeteneği" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Çalışma_Yeteneği">
+              <PropertyRef Name="Çalişma_Yeteneği_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Çalişma_Yeteneği_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Danışman__Kullan__2A4B4B5E">
+          <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanıcı">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Principal>
+            <Dependent Role="Danışman">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Öğrenci__Danışma__2F10007B">
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="0..1" />
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danışman">
+              <PropertyRef Name="Danışman_Id" />
+            </Principal>
+            <Dependent Role="Öğrenci">
+              <PropertyRef Name="Danışman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorum__Danışman___32E0915F">
+          <End Role="Danışman" Type="Self.Danışman" Multiplicity="0..1" />
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Danışman">
+              <PropertyRef Name="Danışman_Id" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="Danışman_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Görev__534D60F1">
+          <End Role="Göreve_Bağlılık" Type="Self.Göreve_Bağlılık" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Göreve_Bağlılık">
+              <PropertyRef Name="Göreve_Bağlılık_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Göreve_Bağlılık_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Mesle__4F7CD00D">
+          <End Role="Mesleki_Ahlak" Type="Self.Mesleki_Ahlak" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesleki_Ahlak">
+              <PropertyRef Name="Mesleki_Ahlak_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Mesleki_Ahlak_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Öğren__5441852A">
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Kanaat_Fo__Yönet__5070F446">
+          <End Role="Yönetme_Yeteneği" Type="Self.Yönetme_Yeteneği" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kanaat_Formu" Type="Self.Kanaat_Formu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yönetme_Yeteneği">
+              <PropertyRef Name="Yönetme_Yeteneği_Id" />
+            </Principal>
+            <Dependent Role="Kanaat_Formu">
+              <PropertyRef Name="Yönetme_Yeteneği_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Öğrenci__Kullanı__2D27B809">
+          <End Role="Kullanıcı" Type="Self.Kullanıcı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanıcı">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Principal>
+            <Dependent Role="Öğrenci">
+              <PropertyRef Name="Kullanıcı_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Öğrenci__Uzmanlı__2E1BDC42">
+          <End Role="Uzmanlık_Alanı" Type="Self.Uzmanlık_Alanı" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzmanlık_Alanı">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Principal>
+            <Dependent Role="Öğrenci">
+              <PropertyRef Name="Uzmanlık_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yorum__Öğrenci_I__31EC6D26">
+          <End Role="Öğrenci" Type="Self.Öğrenci" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yorum" Type="Self.Yorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Öğrenci">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Principal>
+            <Dependent Role="Yorum">
+              <PropertyRef Name="Öğrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="deneme3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Akademik_Ders" EntityType="Self.Akademik_Ders" />
+          <EntitySet Name="Akademik_Ders_Öğrenci" EntityType="Self.Akademik_Ders_Öğrenci" />
+          <EntitySet Name="Akademik_Dönem" EntityType="Self.Akademik_Dönem" />
+          <EntitySet Name="Araştırma_Yeteneği" EntityType="Self.Araştırma_Yeteneği" />
+          <EntitySet Name="Çalışma_Yeteneği" EntityType="Self.Çalışma_Yeteneği" />
+          <EntitySet Name="Danışman" EntityType="Self.Danışman" />
+          <EntitySet Name="Ders_Ekleme_Çıkarma" EntityType="Self.Ders_Ekleme_Çıkarma" />
+          <EntitySet Name="Göreve_Bağlılık" EntityType="Self.Göreve_Bağlılık" />
+          <EntitySet Name="Kanaat_Formu" EntityType="Self.Kanaat_Formu" />
+          <EntitySet Name="Kullanıcı" EntityType="Self.Kullanıcı" />
+          <EntitySet Name="Mesleki_Ahlak" EntityType="Self.Mesleki_Ahlak" />
+          <EntitySet Name="Not_Tablosu" EntityType="Self.Not_Tablosu" />
+          <EntitySet Name="Öğrenci" EntityType="Self.Öğrenci" />
+          <EntitySet Name="Uzmanlık_Alanı" EntityType="Self.Uzmanlık_Alanı" />
+          <EntitySet Name="Yorum" EntityType="Self.Yorum" />
+          <EntitySet Name="Yönetme_Yeteneği" EntityType="Self.Yönetme_Yeteneği" />
+          <AssociationSet Name="FK__Akademik___Akade__403A8C7D" Association="Self.FK__Akademik___Akade__403A8C7D">
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+            <End Role="Akademik_Ders_Öğrenci" EntitySet="Akademik_Ders_Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Akademik___Danış__35BCFE0A" Association="Self.FK__Akademik___Danış__35BCFE0A">
+            <End Role="Danışman" EntitySet="Danışman" />
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Akademik___Uzman__36B12243" Association="Self.FK__Akademik___Uzman__36B12243">
+            <End Role="Uzmanlık_Alanı" EntitySet="Uzmanlık_Alanı" />
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ders_Ekle__Akade__3C69FB99" Association="Self.FK__Ders_Ekle__Akade__3C69FB99">
+            <End Role="Akademik_Ders" EntitySet="Akademik_Ders" />
+            <End Role="Ders_Ekleme_Çıkarma" EntitySet="Ders_Ekleme_Çıkarma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Akademik___Öğren__3F466844" Association="Self.FK__Akademik___Öğren__3F466844">
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+            <End Role="Akademik_Ders_Öğrenci" EntitySet="Akademik_Ders_Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Not_Tablo__Akade__4316F928" Association="Self.FK__Not_Tablo__Akade__4316F928">
+            <End Role="Akademik_Ders_Öğrenci" EntitySet="Akademik_Ders_Öğrenci" />
+            <End Role="Not_Tablosu" EntitySet="Not_Tablosu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ders_Ekle__Akade__3B75D760" Association="Self.FK__Ders_Ekle__Akade__3B75D760">
+            <End Role="Akademik_Dönem" EntitySet="Akademik_Dönem" />
+            <End Role="Ders_Ekleme_Çıkarma" EntitySet="Ders_Ekleme_Çıkarma" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Araşt__5165187F" Association="Self.FK__Kanaat_Fo__Araşt__5165187F">
+            <End Role="Araştırma_Yeteneği" EntitySet="Araştırma_Yeteneği" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Çaliş__52593CB8" Association="Self.FK__Kanaat_Fo__Çaliş__52593CB8">
+            <End Role="Çalışma_Yeteneği" EntitySet="Çalışma_Yeteneği" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Danışman__Kullan__2A4B4B5E" Association="Self.FK__Danışman__Kullan__2A4B4B5E">
+            <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+            <End Role="Danışman" EntitySet="Danışman" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Öğrenci__Danışma__2F10007B" Association="Self.FK__Öğrenci__Danışma__2F10007B">
+            <End Role="Danışman" EntitySet="Danışman" />
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorum__Danışman___32E0915F" Association="Self.FK__Yorum__Danışman___32E0915F">
+            <End Role="Danışman" EntitySet="Danışman" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Görev__534D60F1" Association="Self.FK__Kanaat_Fo__Görev__534D60F1">
+            <End Role="Göreve_Bağlılık" EntitySet="Göreve_Bağlılık" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Mesle__4F7CD00D" Association="Self.FK__Kanaat_Fo__Mesle__4F7CD00D">
+            <End Role="Mesleki_Ahlak" EntitySet="Mesleki_Ahlak" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Öğren__5441852A" Association="Self.FK__Kanaat_Fo__Öğren__5441852A">
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Kanaat_Fo__Yönet__5070F446" Association="Self.FK__Kanaat_Fo__Yönet__5070F446">
+            <End Role="Yönetme_Yeteneği" EntitySet="Yönetme_Yeteneği" />
+            <End Role="Kanaat_Formu" EntitySet="Kanaat_Formu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Öğrenci__Kullanı__2D27B809" Association="Self.FK__Öğrenci__Kullanı__2D27B809">
+            <End Role="Kullanıcı" EntitySet="Kullanıcı" />
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Öğrenci__Uzmanlı__2E1BDC42" Association="Self.FK__Öğrenci__Uzmanlı__2E1BDC42">
+            <End Role="Uzmanlık_Alanı" EntitySet="Uzmanlık_Alanı" />
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yorum__Öğrenci_I__31EC6D26" Association="Self.FK__Yorum__Öğrenci_I__31EC6D26">
+            <End Role="Öğrenci" EntitySet="Öğrenci" />
+            <End Role="Yorum" EntitySet="Yorum" />
+          </AssociationSet>
+          <FunctionImport Name="danismannameeee" ReturnType="Collection(String)">
+            <Parameter Name="Danışman_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="deneme3ModelStoreContainer" CdmEntityContainer="deneme3Entities">
+          <EntitySetMapping Name="Akademik_Ders">
+            <EntityTypeMapping TypeName="deneme3Model.Akademik_Ders">
+              <MappingFragment StoreEntitySet="Akademik_Ders">
+                <ScalarProperty Name="Akademik_Ders_Id" ColumnName="Akademik_Ders_Id" />
+                <ScalarProperty Name="Danışman_Id" ColumnName="Danışman_Id" />
+                <ScalarProperty Name="Uzmanlık_Id" ColumnName="Uzmanlık_Id" />
+                <ScalarProperty Name="Ders_Tanımı" ColumnName="Ders_Tanımı" />
+                <ScalarProperty Name="Ders_Kod" ColumnName="Ders_Kod" />
+                <ScalarProperty Name="AKTS" ColumnName="AKTS" />
+                <ScalarProperty Name="KREDI" ColumnName="KREDI" />
+                <ScalarProperty Name="DIL_ID" ColumnName="DIL_ID" />
+                <ScalarProperty Name="TUR_ID" ColumnName="TUR_ID" />
+                <ScalarProperty Name="Psf_Id" ColumnName="Psf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Akademik_Ders_Öğrenci">
+            <EntityTypeMapping TypeName="deneme3Model.Akademik_Ders_Öğrenci">
+              <MappingFragment StoreEntitySet="Akademik_Ders_Öğrenci">
+                <ScalarProperty Name="Akademik_Ders_Öğrenci_Id" ColumnName="Akademik_Ders_Öğrenci_Id" />
+                <ScalarProperty Name="Öğrenci_Id" ColumnName="Öğrenci_Id" />
+                <ScalarProperty Name="Akademik_Ders_Id" ColumnName="Akademik_Ders_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Akademik_Dönem">
+            <EntityTypeMapping TypeName="deneme3Model.Akademik_Dönem">
+              <MappingFragment StoreEntitySet="Akademik_Dönem">
+                <ScalarProperty Name="Akademik_Dönem_Id" ColumnName="Akademik_Dönem_Id" />
+                <ScalarProperty Name="Akademik_Dönem1" ColumnName="Akademik_Dönem" />
+                <ScalarProperty Name="Yarıyıl" ColumnName="Yarıyıl" />
+                <ScalarProperty Name="Toplam_Hafta" ColumnName="Toplam_Hafta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Araştırma_Yeteneği">
+            <EntityTypeMapping TypeName="deneme3Model.Araştırma_Yeteneği">
+              <MappingFragment StoreEntitySet="Araştırma_Yeteneği">
+                <ScalarProperty Name="Araştırma_Yeteneği_Id" ColumnName="Araştırma_Yeteneği_Id" />
+                <ScalarProperty Name="Araştırma_İsteği" ColumnName="Araştırma_İsteği" />
+                <ScalarProperty Name="Yürütme_Sonuç" ColumnName="Yürütme_Sonuç" />
+                <ScalarProperty Name="Kaynak_Verimli_Kullanma" ColumnName="Kaynak_Verimli_Kullanma" />
+                <ScalarProperty Name="Yayın_Yapma_Becerisi" ColumnName="Yayın_Yapma_Becerisi" />
+                <ScalarProperty Name="Araştırma_Yetenek_Ort" ColumnName="Araştırma_Yetenek_Ort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Çalışma_Yeteneği">
+            <EntityTypeMapping TypeName="deneme3Model.Çalışma_Yeteneği">
+              <MappingFragment StoreEntitySet="Çalışma_Yeteneği">
+                <ScalarProperty Name="Çalişma_Yeteneği_Id" ColumnName="Çalişma_Yeteneği_Id" />
+                <ScalarProperty Name="Mesleki_Uygulama_Yeteneği" ColumnName="Mesleki_Uygulama_Yeteneği" />
+                <ScalarProperty Name="Bilimsellik" ColumnName="Bilimsellik" />
+                <ScalarProperty Name="Ekip_Çalışması_Uyum" ColumnName="Ekip_Çalışması_Uyum" />
+                <ScalarProperty Name="Çalışma_Yeteneği_Ort" ColumnName="Çalışma_Yeteneği_Ort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Danışman">
+            <EntityTypeMapping TypeName="deneme3Model.Danışman">
+              <MappingFragment StoreEntitySet="Danışman">
+                <ScalarProperty Name="Danışman_Id" ColumnName="Danışman_Id" />
+                <ScalarProperty Name="Kullanıcı_Id" ColumnName="Kullanıcı_Id" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="Danışman_Ad" ColumnName="Danışman_Ad" />
+                <ScalarProperty Name="Danışman_Soyad" ColumnName="Danışman_Soyad" />
+                <ScalarProperty Name="Danışman_Doğum_Tarihi" ColumnName="Danışman_Doğum_Tarihi" />
+                <ScalarProperty Name="Danışman_Doğum_Yeri" ColumnName="Danışman_Doğum_Yeri" />
+                <ScalarProperty Name="Danışman_Uyruğu" ColumnName="Danışman_Uyruğu" />
+                <ScalarProperty Name="Uzmanlık_Başlama_Tarihi" ColumnName="Uzmanlık_Başlama_Tarihi" />
+                <ScalarProperty Name="Psf_Id" ColumnName="Psf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ders_Ekleme_Çıkarma">
+            <EntityTypeMapping TypeName="deneme3Model.Ders_Ekleme_Çıkarma">
+              <MappingFragment StoreEntitySet="Ders_Ekleme_Çıkarma">
+                <ScalarProperty Name="Ders_Ekleme_Cikarma_Id" ColumnName="Ders_Ekleme_Cikarma_Id" />
+                <ScalarProperty Name="Akademik_Dönem_Id" ColumnName="Akademik_Dönem_Id" />
+                <ScalarProperty Name="Akademik_Ders_Id" ColumnName="Akademik_Ders_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Göreve_Bağlılık">
+            <EntityTypeMapping TypeName="deneme3Model.Göreve_Bağlılık">
+              <MappingFragment StoreEntitySet="Göreve_Bağlılık">
+                <ScalarProperty Name="Göreve_Bağlılık_Id" ColumnName="Göreve_Bağlılık_Id" />
+                <ScalarProperty Name="Mesai_Saat_Uyum" ColumnName="Mesai_Saat_Uyum" />
+                <ScalarProperty Name="Görev_Sorumluluğu" ColumnName="Görev_Sorumluluğu" />
+                <ScalarProperty Name="Görev_Yürütme" ColumnName="Görev_Yürütme" />
+                <ScalarProperty Name="Görev_Sonuç" ColumnName="Görev_Sonuç" />
+                <ScalarProperty Name="Görev_Bağlılık_Ort" ColumnName="Görev_Bağlılık_Ort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kanaat_Formu">
+            <EntityTypeMapping TypeName="deneme3Model.Kanaat_Formu">
+              <MappingFragment StoreEntitySet="Kanaat_Formu">
+                <ScalarProperty Name="Kanaat_Form_Id" ColumnName="Kanaat_Form_Id" />
+                <ScalarProperty Name="Mesleki_Ahlak_Id" ColumnName="Mesleki_Ahlak_Id" />
+                <ScalarProperty Name="Yönetme_Yeteneği_Id" ColumnName="Yönetme_Yeteneği_Id" />
+                <ScalarProperty Name="Araştırma_Yeteneği_Id" ColumnName="Araştırma_Yeteneği_Id" />
+                <ScalarProperty Name="Çalişma_Yeteneği_Id" ColumnName="Çalişma_Yeteneği_Id" />
+                <ScalarProperty Name="Göreve_Bağlılık_Id" ColumnName="Göreve_Bağlılık_Id" />
+                <ScalarProperty Name="Öğrenci_Id" ColumnName="Öğrenci_Id" />
+                <ScalarProperty Name="Deg_Not" ColumnName="Deg_Not" />
+                <ScalarProperty Name="Açıklama" ColumnName="Açıklama" />
+                <ScalarProperty Name="Formu_Dolduran" ColumnName="Formu_Dolduran" />
+                <ScalarProperty Name="Düşük_Tekrar" ColumnName="Düşük_Tekrar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanıcı">
+            <EntityTypeMapping TypeName="deneme3Model.Kullanıcı">
+              <MappingFragment StoreEntitySet="Kullanıcı">
+                <ScalarProperty Name="Kullanıcı_Id" ColumnName="Kullanıcı_Id" />
+                <ScalarProperty Name="Kullanıcı_Adı" ColumnName="Kullanıcı_Adı" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="TC_No" ColumnName="TC_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesleki_Ahlak">
+            <EntityTypeMapping TypeName="deneme3Model.Mesleki_Ahlak">
+              <MappingFragment StoreEntitySet="Mesleki_Ahlak">
+                <ScalarProperty Name="Mesleki_Ahlak_Id" ColumnName="Mesleki_Ahlak_Id" />
+                <ScalarProperty Name="Öğrenci_İlişkiler" ColumnName="Öğrenci_İlişkiler" />
+                <ScalarProperty Name="Uzman_İlişkiler" ColumnName="Uzman_İlişkiler" />
+                <ScalarProperty Name="Çalışan_İlişkiler" ColumnName="Çalışan_İlişkiler" />
+                <ScalarProperty Name="Hasta_İlişkiler" ColumnName="Hasta_İlişkiler" />
+                <ScalarProperty Name="Diğer_İlişkiler" ColumnName="Diğer_İlişkiler" />
+                <ScalarProperty Name="Mesleki_Ahlak_Ort" ColumnName="Mesleki_Ahlak_Ort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Not_Tablosu">
+            <EntityTypeMapping TypeName="deneme3Model.Not_Tablosu">
+              <MappingFragment StoreEntitySet="Not_Tablosu">
+                <ScalarProperty Name="Not_Id" ColumnName="Not_Id" />
+                <ScalarProperty Name="Akademik_Ders_Öğrenci_Id" ColumnName="Akademik_Ders_Öğrenci_Id" />
+                <ScalarProperty Name="Sınav_Not" ColumnName="Sınav_Not" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Öğrenci">
+            <EntityTypeMapping TypeName="deneme3Model.Öğrenci">
+              <MappingFragment StoreEntitySet="Öğrenci">
+                <ScalarProperty Name="Öğrenci_Id" ColumnName="Öğrenci_Id" />
+                <ScalarProperty Name="Kullanıcı_Id" ColumnName="Kullanıcı_Id" />
+                <ScalarProperty Name="Uzmanlık_Id" ColumnName="Uzmanlık_Id" />
+                <ScalarProperty Name="Danışman_Id" ColumnName="Danışman_Id" />
+                <ScalarProperty Name="Öğrenci_Ad" ColumnName="Öğrenci_Ad" />
+                <ScalarProperty Name="Öğrenci_Soyad" ColumnName="Öğrenci_Soyad" />
+                <ScalarProperty Name="Öğrenci_Doğum_Tarihi" ColumnName="Öğrenci_Doğum_Tarihi" />
+                <ScalarProperty Name="Öğrenci_Doğum_Yeri" ColumnName="Öğrenci_Doğum_Yeri" />
+                <ScalarProperty Name="Öğrenci_Uyruğu" ColumnName="Öğrenci_Uyruğu" />
+                <ScalarProperty Name="Öğrenci_DUS_Puanı" ColumnName="Öğrenci_DUS_Puanı" />
+                <ScalarProperty Name="Uzmanlık_Eğitimi_Başlama_Tarihi" ColumnName="Uzmanlık_Eğitimi_Başlama_Tarihi" />
+                <ScalarProperty Name="Uzmanlık_Eğitimi_Tamamlama_Tarihi" ColumnName="Uzmanlık_Eğitimi_Tamamlama_Tarihi" />
+                <ScalarProperty Name="Psf_Id" ColumnName="Psf_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzmanlık_Alanı">
+            <EntityTypeMapping TypeName="deneme3Model.Uzmanlık_Alanı">
+              <MappingFragment StoreEntitySet="Uzmanlık_Alanı">
+                <ScalarProperty Name="Uzmanlık_Id" ColumnName="Uzmanlık_Id" />
+                <ScalarProperty Name="Uzmanlık_Ad" ColumnName="Uzmanlık_Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorum">
+            <EntityTypeMapping TypeName="deneme3Model.Yorum">
+              <MappingFragment StoreEntitySet="Yorum">
+                <ScalarProperty Name="Yorum_Id" ColumnName="Yorum_Id" />
+                <ScalarProperty Name="Öğrenci_Id" ColumnName="Öğrenci_Id" />
+                <ScalarProperty Name="Danışman_Id" ColumnName="Danışman_Id" />
+                <ScalarProperty Name="Yorum1" ColumnName="Yorum" />
+                <ScalarProperty Name="Yorum_Tarihi" ColumnName="Yorum_Tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yönetme_Yeteneği">
+            <EntityTypeMapping TypeName="deneme3Model.Yönetme_Yeteneği">
+              <MappingFragment StoreEntitySet="Yönetme_Yeteneği">
+                <ScalarProperty Name="Yönetme_Yeteneği_Id" ColumnName="Yönetme_Yeteneği_Id" />
+                <ScalarProperty Name="Problem_Çözüm" ColumnName="Problem_Çözüm" />
+                <ScalarProperty Name="Org_Koord_Yetenek" ColumnName="Org_Koord_Yetenek" />
+                <ScalarProperty Name="İletişim_Yetenek" ColumnName="İletişim_Yetenek" />
+                <ScalarProperty Name="Yönetme_Yet_Ort" ColumnName="Yönetme_Yet_Ort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="danismannameeee" FunctionName="deneme3Model.Store.danismannameeee" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

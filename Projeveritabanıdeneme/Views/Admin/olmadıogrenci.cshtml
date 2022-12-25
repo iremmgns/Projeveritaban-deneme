@@ -1,0 +1,66 @@
+﻿@model Projeveritabanıdeneme.ViewModels.Danisman_UzmanlıkViewModel
+@{
+    ViewBag.Title = "Kaydet2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kişisel Bilgiler</h2>
+
+@using (Html.BeginForm("Kaydet2", "Admin", FormMethod.Post))//HELPER METOT Hem ekleme hem güncelleme işlemi buradan oluyor.
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Kullanıcı.TC_No)
+        @Html.TextBoxFor(m => m.Kullanıcı.TC_No, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Öğrenci_Ad)
+        @Html.TextBoxFor(m => m.Öğrenci.Öğrenci_Ad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Öğrenci.Öğrenci_Soyad)
+        @Html.TextBoxFor(m => m.Öğrenci.Öğrenci_Soyad, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Öğrenci_Doğum_Tarihi)
+        @Html.TextBoxFor(m => m.Öğrenci.Öğrenci_Doğum_Tarihi.Value.ToString("dd-MM-yyyy"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Öğrenci_Doğum_Yeri)
+        @Html.TextBoxFor(m => m.Öğrenci.Öğrenci_Doğum_Yeri, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Öğrenci_Uyruğu)
+        @Html.TextBoxFor(m => m.Öğrenci.Öğrenci_Uyruğu, new { @class = "form-control" })
+    </div>
+    <h2>Akademik Bilgiler</h2>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Öğrenci_DUS_Puanı)
+        @Html.TextBoxFor(m => m.Öğrenci.Öğrenci_DUS_Puanı, new { @class = "form-control" })
+    </div>
+    @*<div class="form-group">
+
+            @Html.LabelFor(m => m.Öğrenci.Danışman.Danışman_Ad)
+            @Html.DropDownListFor(m => m.Öğrenci.Danışman.Danışman_Ad, new SelectList(Model.Danışman,"Danışman_Id","Danışman_Ad"), "Danışman Seçiniz", new { @class = "form-control" })
+        </div>*@
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Uzmanlık_Alanı.Uzmanlık_Ad)
+        @Html.DropDownListFor(m => m.Öğrenci.Uzmanlık_Alanı.Uzmanlık_Ad, new SelectList(Model.UzmanlıkAlanı, "Uzmanlık_Id", "Uzmanlık_Alanı"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Uzmanlık_Eğitimi_Başlama_Tarihi)
+        @Html.TextBoxFor(m => m.Öğrenci.Uzmanlık_Eğitimi_Başlama_Tarihi.Value.ToString("dd-MM-yyyy"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Öğrenci.Uzmanlık_Eğitimi_Tamamlama_Tarihi)
+        @Html.TextBoxFor(m => m.Öğrenci.Uzmanlık_Eğitimi_Tamamlama_Tarihi.Value.ToString("dd-MM-yyyy"), new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default">Kaydet</button>
+}

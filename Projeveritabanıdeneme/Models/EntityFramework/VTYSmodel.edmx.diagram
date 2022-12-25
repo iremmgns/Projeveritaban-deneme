@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d613f845a9ad46f3831973421f8e961e" Name="Diagram1">
+        <EntityTypeShape EntityType="deneme3Model.Akademik_Ders" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Akademik_Ders_Öğrenci" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Akademik_Dönem" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Araştırma_Yeteneği" Width="1.5" PointX="11.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Çalışma_Yeteneği" Width="1.5" PointX="11.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Danışman" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Ders_Ekleme_Çıkarma" Width="1.5" PointX="10.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Göreve_Bağlılık" Width="1.5" PointX="11.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Kanaat_Formu" Width="1.5" PointX="13.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Kullanıcı" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Mesleki_Ahlak" Width="1.5" PointX="11.25" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Not_Tablosu" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Öğrenci" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Uzmanlık_Alanı" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Yorum" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="deneme3Model.Yönetme_Yeteneği" Width="1.5" PointX="11.25" PointY="26.625" IsExpanded="true" />
+        <AssociationConnector Association="deneme3Model.FK__Akademik___Akade__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Akademik___Danış__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Akademik___Uzman__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Ders_Ekle__Akade__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Akademik___Öğren__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Not_Tablo__Akade__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Ders_Ekle__Akade__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Kanaat_Fo__Araşt__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Kanaat_Fo__Çaliş__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Danışman__Kullan__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Öğrenci__Danışma__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Yorum__Danışman___32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Kanaat_Fo__Görev__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Kanaat_Fo__Mesle__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Kanaat_Fo__Öğren__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Kanaat_Fo__Yönet__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Öğrenci__Kullanı__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Öğrenci__Uzmanlı__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="deneme3Model.FK__Yorum__Öğrenci_I__31EC6D26" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

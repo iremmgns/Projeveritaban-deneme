@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Projeveritabanıdeneme.Models.EntityFramework.Akademik_Ders>
+@{
+    ViewBag.Title = "Index3";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-3">
+    @using (Html.BeginForm("Index3", "Admin", FormMethod.Get))
+    {
+        @Html.TextBox("searching")
+        <input type="submit" value="submit" />
+
+    }
+
+    <h2>Danışman Listesi</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ders Kodu</th>
+                <th>Ders Tanımı</th>
+                <th>Ders Uzmanlık Alanı</th>
+                <th>Ders Yürütücü</th>
+                <th>Ders Dili</th>
+                <th>Ders Türü</th>
+                <th>Kredi</th>
+                <th>AKTS</th>
+                <th>Guncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var akademikDers in Model)
+            {
+
+            <tr>
+                <td>@Html.DisplayFor(modelakademikders => akademikDers.Ders_Kod)</td>
+                <td>@Html.DisplayFor(modelakademikDers => akademikDers.Ders_Tanımı)</td>
+                <td>@Html.DisplayFor(modelakademikders => akademikDers.Uzmanlık_Alanı.Uzmanlık_Ad)</td>
+                <td>@Html.DisplayFor(modelakademikDers => akademikDers.Danışman.Danışman_Ad)</td>
+                <td>@Html.DisplayFor(modelakademikDers => akademikDers.DIL_ID)</td>
+                <td>@Html.DisplayFor(modelakademikDers => akademikDers.TUR_ID)</td>
+                <td>@Html.DisplayFor(modelakademikDers => akademikDers.KREDI)</td>
+                <td>@Html.DisplayFor(modelakademikDers => akademikDers.AKTS)</td>
+                <td><a class="btn btn-primary" href="/Departman/Guncelle/@akademikDers.Akademik_Ders_Id">Guncelle</a></td>
+                <td><a class="btn btn-warning" href="/Departman/Sil/@akademikDers.Ders_Tanımı">Sil</a></td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
